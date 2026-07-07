@@ -1,0 +1,31 @@
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Build outputs (TypeScript / Bundlers)
+dist/
+build/
+.next/
+.nuxt/
+out/
+
+# Local environment variables / Secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env.bak
+
+# Testing & Coverage
+coverage/
+.nyc_output
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+arya.config
