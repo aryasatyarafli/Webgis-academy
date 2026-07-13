@@ -1,4 +1,5 @@
 import {Map} from 'maplibre-gl';
+import naturalEarthData from "./data/ne_populated.geojson?url";
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -12,29 +13,12 @@ const map = new Map({
     zoom: 6,
 });
 
-const data = {
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Tangerang"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          106.6601242,
-          -6.2017745
-        ]
-      }
-    }
-  ]
-}
+
 
 map.on('load', () => {
 map.addSource("Kota", {
     type: "geojson",
-    data: data
+    data: naturalEarthData
 })
 
 map.addLayer({
