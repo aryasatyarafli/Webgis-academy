@@ -1,5 +1,6 @@
 import {Map} from 'maplibre-gl';
 import naturalEarthData from "./data/ne_populated.geojson?url";
+import areaData from "./data/area.geojson?url";
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -10,14 +11,14 @@ const map = new Map({
     container: 'map',
     style: 'https://demotiles.maplibre.org/globe.json',
     center: [106.83, -6.19],
-    zoom: 8,
+    zoom: 3,
 });
 
-
+//layer vector point
 map.on('load', () => {
 map.addSource("Kota", {
     type: "geojson",
-    data: "https://geoserver.mapid.io/layers_new/get_layer?api_key=42a17dc7d53c49c3807ee35b6e56ee11&layer_id=6a54dbd27361c8b74fb8b74b&project_id=6a2d071bbccdad7e1b06220a"
+    data: naturalEarthData
 })
 
 map.addLayer({
@@ -30,4 +31,41 @@ map.addLayer({
         "circle-stroke-width": 1,
         "circle-stroke-color": "black"
     }
-})})
+})
+//layer vector polygon
+map.addSource("Pulau", {
+    type: "geojson",
+    data: areaData
+})
+
+map.addLayer({
+  id: "area-pulau",
+  type: "fill",
+  source: "Pulau",
+  paint: {
+    "fill-color": "#0000ff",
+    "fill-outline-color": "black"
+  }
+})
+
+
+//layer raster
+map.addSource("spongebob", {
+    type: "image",
+    url: "https://static.wikia.nocookie.net/cartoons/images/e/ed/Profile_-_SpongeBob_SquarePants.png",
+    coordinates: [
+        [79.16, -0.40], // top left
+        [94.18, -1.66], // top right
+        [94.65, -14.73], // bottom right
+        [72.97, -13.74] // bottom left
+    ]
+    });
+
+map.addLayer({
+    id: "spongebob-layer",
+    type: "raster",
+    source: "spongebob",
+})
+
+
+})
