@@ -1,7 +1,8 @@
 import {Map} from 'maplibre-gl';
 import {addKotalayer, addAreaLayer} from "./layers/vector.js";
 import {addrasterLayer} from "./layers/raster.js";
-
+import 'maplibre-gl/dist/maplibre-gl.css';
+import {addAttribution} from "./controls/basicControls.js";
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -12,9 +13,9 @@ const map = new Map({
     container: 'map',
     style: 'https://demotiles.maplibre.org/globe.json',
     center: [106.83, -6.19],
-    zoom: 3,
+    zoom: 2,
+    attributionControl: false,
 });
-
 
 map.on('load', () => {
 addKotalayer(map);
@@ -23,3 +24,5 @@ addrasterLayer(map);
 
 
 })
+
+addAttribution(map, "Natural Earth, Nickelodeon");
