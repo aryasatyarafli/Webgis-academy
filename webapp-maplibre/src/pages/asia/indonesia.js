@@ -2,6 +2,7 @@ import {Map, AttributionControl} from 'maplibre-gl';
 import {addKotalayer, addAreaLayer} from "../../layers/vector.js";
 import 'maplibre-gl/dist/maplibre-gl.css';
 import {addAttribution} from "../../controls/basicControls.js";
+import {logosmadavcontrol} from "../controls/CustomLogoControls.js";
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -16,9 +17,12 @@ const map = new Map({
     customAttribution: false
 });
 
-addAttribution(map, "Natural Earth");
+
 
 map.on('load', () => {
 addKotalayer(map);
 addAreaLayer(map);
 })
+
+addAttribution(map, "Natural Earth");
+map.addControl(new logosmadavcontrol(), "top-left");

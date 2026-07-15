@@ -1,8 +1,9 @@
-import {Map} from 'maplibre-gl';
+import {Map, FullscreenControl, GlobeControl, LogoControl} from 'maplibre-gl';
 import {addKotalayer, addAreaLayer} from "./layers/vector.js";
 import {addrasterLayer} from "./layers/raster.js";
 import 'maplibre-gl/dist/maplibre-gl.css';
 import {addAttribution} from "./controls/basicControls.js";
+import {logosmadavcontrol} from "./controls/CustomLogoControls.js";
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -24,5 +25,9 @@ addrasterLayer(map);
 
 
 })
-
+// CControls Settings (Attribution)
 addAttribution(map, "Natural Earth, Nickelodeon");
+map.addControl(new FullscreenControl());
+map.addControl(new GlobeControl());
+map.addControl(new LogoControl({compact: false}));
+map.addControl(new logosmadavcontrol(), "top-left");

@@ -1,8 +1,8 @@
 import {AttributionControl} from 'maplibre-gl';
-export function addAttribution(map) {
+export function addAttribution(map, att) {
 
 map.addControl(new AttributionControl({
     compact: true,
-    customAttribution: 'Natural Earth Dataset, Nickelodeon'
+    customAttribution: att
 }));
 }
