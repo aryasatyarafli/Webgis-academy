@@ -2,7 +2,7 @@ import {Map, AttributionControl} from 'maplibre-gl';
 import {addKotalayer, addAreaLayer} from "../../layers/vector.js";
 import 'maplibre-gl/dist/maplibre-gl.css';
 import {addAttribution} from "../../controls/basicControls.js";
-import {logosmadavcontrol} from "../controls/CustomLogoControls.js";
+import {logosmadavcontrol} from "../../controls/CustomLogoControls.js";
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
