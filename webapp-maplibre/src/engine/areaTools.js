@@ -1,4 +1,6 @@
 import {geojsonToWKT} from "@terraformer/wkt"
+import { API_BASE_URL } from "../config"
+
 
 export function storeAreaGeometry (event) {
     const geometry = event.features[0].geometry
@@ -7,7 +9,7 @@ export function storeAreaGeometry (event) {
 }
 
 export async function computeArea(wkt){
-const response = await fetch("http://127.0.0.1:5000/spatial_computation/area",
+const response = await fetch(`${API_BASE_URL}/api/v1/spatial_computation/area`,
     {
     method: "POST",
     headers: {"Content-Type": "application/json"},

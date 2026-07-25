@@ -1,5 +1,6 @@
 import {geojsonToWKT, wktToGeoJSON} from "@terraformer/wkt"
 import { addBufferLayer } from "../layers/vector"
+import { API_BASE_URL } from "../config"
 
 
 export function storeBufferGeometry(map, event){
@@ -11,7 +12,7 @@ export function storeBufferGeometry(map, event){
 }
 
 export async function computeBuffer(map, wkt){
-const response = await fetch("http://127.0.0.1:5000/geometry_manipulation/buffer",
+const response = await fetch(`${API_BASE_URL}/api/v1/geometry_manipulation/buffer`,
     {
     method: "POST",
     headers: {"Content-Type": "application/json"},
